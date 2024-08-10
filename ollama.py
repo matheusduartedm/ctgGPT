@@ -43,7 +43,7 @@ def generate_contingency_list(file_path, substation_name):
 
 
 if __name__ == "__main__":
-    file_path = r"D:\repo\ctgGPT\examples\contigencies.ctg"
+    file_path = r"D:\repo\ctgGPT\examples\contingencies.ctg"
     substation_name = "Rio Novo do Sul 500 kV"
     contingency_list = generate_contingency_list(file_path, substation_name)
     print(contingency_list)

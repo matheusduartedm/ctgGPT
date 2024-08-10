@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+OPENAI_MODEL_NAME = os.getenv('OPENAI_MODEL_NAME')
 
 def read_ctg_file(file_path):
     with open(file_path, 'r') as file:
@@ -33,7 +34,7 @@ def generate_contingency_list(file_path, substation_name):
     {file_content}
     """
 
-    response = client.chat.completions.create(model="gpt-4o",
+    response = client.chat.completions.create(model='gpt-4o',
                                               messages=[
                                                   {"role": "system",
                                                    "content": "Você é um engenheiro de estudos elétricos brasileiro."},
@@ -43,7 +44,7 @@ def generate_contingency_list(file_path, substation_name):
 
 
 if __name__ == "__main__":
-    file_path = r"D:\repo\ctgGPT\examples\contigencies.ctg"
+    file_path = r"D:\repo\ctgGPT\examples\contingencies.ctg"
     substation_name = "Rio Novo do Sul 500 kV"
     contingency_list = generate_contingency_list(file_path, substation_name)
     print(contingency_list)
